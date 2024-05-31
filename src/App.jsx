@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch } from 'react-redux'
 import authService from "./appwrite/auth"
 import { login, logout } from "./store/authSlice"
+import { Outlet } from 'react-router-dom'
 
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
@@ -23,23 +24,19 @@ function App() {
     .finally(()=> setLoading(false))
   }, [])
 
-  if (loading){
-    return null
-  }else{
-    return (
-      <>
-        <div className="min-h-screen flex flex-wrap content-between bg-[0d0d0d] text-white">
-          <div className="w-full block">
-            <Header />
-            <main>
-              {/* <Outlet /> */}
-            </main>
-            <Footer />
-          </div>
-        </div>
-      </>
-    )
-  }
+  return !loading ? (
+    <div className="w-100 h-screen flex flex-col justify-between bg-[#0d0d0d] text-white font-Roboto">
+      <div className="w-10/12  h-screen mx-auto ">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>
+  ) : null
+
 }
+
 
 export default App

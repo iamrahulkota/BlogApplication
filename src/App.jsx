@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom'
 
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
+import HomeLayout from "./components/HomeLayout/HomeLayout"
 
 function App() {
 
@@ -25,14 +26,17 @@ function App() {
   }, [])
 
   return !loading ? (
-    <div className="w-100 h-screen flex flex-col justify-between bg-[#0d0d0d] text-white font-Roboto">
-      <div className="w-10/12  h-screen mx-auto ">
+    <div className="w-full h-screen flex flex-col justify-between bg-[#0d0d0d] text-white font-Roboto">
+    <div className="w-full h-full">
+      <div className="w-10/12 mx-auto ">
         <Header />
+        <HomeLayout />
         <main>
           <Outlet />
         </main>
         <Footer />
       </div>
+    </div>
     </div>
   ) : null
 

@@ -5,5 +5,8 @@ import LogoutBtn from "./Header/LogoutBtn";
 export {
     Header,
     Footer,
-    LogoutBtn
+    LogoutBtn,
+    PostCard,
+    Select,
+    Input
 }

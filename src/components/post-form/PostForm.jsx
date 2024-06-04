@@ -5,7 +5,7 @@ import appwriteService from '../../appwrite/config'
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-function PostForm() {
+export default function PostForm({ post }) {
     const navigate = useNavigate()
     const userData = useSelector((state) => state.auth.userData);
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -62,12 +62,15 @@ function PostForm() {
         return "";
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         const subscription = watch((value, { name }) => {
             if (name === "title") {
-                setValue("slug", slugTransform(value.title), { shouldValidate: true });
+                setValue("slug", slugTranform(value.title), { shouldValidate: true });
             }
-    },[watch, slugTranform, setValue]);
+        });
+
+        return () => subscription.unsubscribe();
+    }, [watch, slugTranform, setValue]);
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
@@ -84,7 +87,7 @@ function PostForm() {
                     className="mb-4"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
-                        setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
+                        setValue("slug", slugTranform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
@@ -117,7 +120,5 @@ function PostForm() {
                 </Button>
             </div>
         </form>
-  )
+  );
 }
-
-export default PostForm

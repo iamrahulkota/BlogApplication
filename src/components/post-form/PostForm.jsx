@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { Input, Select, RTE } from '../index'
 import appwriteService from '../../appwrite/config'
@@ -50,6 +50,24 @@ function PostForm() {
             }
         }
     }
+
+    const slugTranform = useCallback((value) => {
+        if (value && typeof value === 'string') {
+            return value
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-zA-Z\d\s]+/g, "-")
+                .replace(/\s/g, "-");
+        }
+        return "";
+    }, [])
+
+    useEffect(()=>{
+        const subscription = watch((value, { name }) => {
+            if (name === "title") {
+                setValue("slug", slugTransform(value.title), { shouldValidate: true });
+            }
+    },[watch, slugTranform, setValue]);
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">

@@ -5,6 +5,12 @@ import RTE from "./RTE";
 import Select from './Select'
 import Input from './Input'
 import PostCard from './PostCard'
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
+import Post from './Post'
+import PostForm from '../components/post-form/PostForm'
+import PostCard from "./PostCard";
+import AuthLayout from './AuthLayout'
 
 export {
     Header,
@@ -13,5 +19,11 @@ export {
     PostCard,
     Select,
     Input,
-    RTE
+    RTE,
+    Login,
+    Signup,
+    Post,
+    PostForm,
+    PostCard
+
 }

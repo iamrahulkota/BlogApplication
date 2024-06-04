@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
-import HomeLayout from "./components/HomeLayout/HomeLayout"
+import HomeLayout from "./pages/HomeLayout"
 
 function App() {
 

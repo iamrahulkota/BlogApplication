@@ -1,5 +1,5 @@
 import React from 'react'
-import { Post  }
+import { Post  } from '../components/index'
 
 function AddPost() {
   return (
@@ -8,6 +8,6 @@ function AddPost() {
     </div>
   )
 }
-import { PostForm } from '../components'
+import { PostForm } from '../components/index'
 
 export default AddPost

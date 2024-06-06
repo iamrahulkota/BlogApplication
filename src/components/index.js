@@ -7,10 +7,9 @@ import Input from './Input'
 import PostCard from './PostCard'
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import Post from './Post'
 import PostForm from '../components/post-form/PostForm'
-import PostCard from "./PostCard";
 import AuthLayout from './AuthLayout'
+import Post from "../pages/Post";
 
 export {
     Header,
@@ -24,6 +23,6 @@ export {
     Signup,
     Post,
     PostForm,
-    PostCard
+    AuthLayout
 
 }

@@ -43,8 +43,7 @@ export class Service{
                     title,
                     content,
                     featuredImage,
-                    status,
-
+                    status, 
                 }
             )
         } catch (error) {
@@ -135,3 +134,5 @@ export class Service{
 
 const service = new Service()
 export default service
+
+console.log(conf.appwriteDatabaseId);

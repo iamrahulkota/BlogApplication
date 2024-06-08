@@ -28,17 +28,16 @@ function Login() {
 
   return (
     <div
-    className='flex items-center justify-center w-full'
-    >
-        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+    className='my-20 flex items-center justify-center w-full'>
+        <div className={`mx-auto w-full max-w-lg bg-[#121212] rounded-xl p-20 border-0`}>
         <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <h1>Sleek Stories</h1>
                     </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
-                    Don&apos;t have any account?
+        <p className="mt-2 text-center text-white text-black/60">
+                    Dont have any account?
                     <Link
                         to="/signup"
                         className="font-medium text-primary transition-all duration-200 hover:underline"
@@ -71,8 +70,7 @@ function Login() {
                 />
                 <Button
                 type="submit"
-                className="w-full"
-                >Sign in</Button>
+                className="px-10 py-2 bg-[#0D0D0D]">Sign in</Button>
             </div>
         </form>
         </div>

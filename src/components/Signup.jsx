@@ -16,6 +16,7 @@ function Signup() {
     const {register, handleSubmit} = useForm()
 
     const create = async(data) => {
+        console.log(data)
         setError("")
         try {
             const userData = await authService.createAccount(data)
@@ -29,16 +30,16 @@ function Signup() {
         }
     }
 
+
   return (
     <div className="flex items-center justify-center">
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-            <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
+            <div className={`mx-auto w-full max-w-lg bg-[#121212] rounded-xl p-20`}>
+            <div className="mb-2 flex-col justify-center">
+                    <span className="">
                         <h1>Sleek Stories</h1>
                     </span>
-                </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
+                <p className="mt-2 text-center text-white">
                     Already have an account?
                     <Link
                         to="/login"
@@ -47,6 +48,7 @@ function Signup() {
                         Sign In
                     </Link>
                 </p>
+            </div>
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
                 <form onSubmit={handleSubmit(create)}>
@@ -54,16 +56,13 @@ function Signup() {
                         <Input
                         label="Full Name: "
                         placeholder="Enter your full name"
-                        {...register("name", {
-                            required: true,
-                        })}
+                        {...register("name")}
                         />
                         <Input
                         label="Email: "
                         placeholder="Enter your email"
                         type="email"
                         {...register("email", {
-                            required: true,
                             validate: {
                                 matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
                                 "Email address must be a valid address",
@@ -74,10 +73,9 @@ function Signup() {
                         label="Password: "
                         type="password"
                         placeholder="Enter your password"
-                        {...register("password", {
-                            required: true,})}
+                        {...register("password")}
                         />
-                        <Button type="submit" className="w-full">
+                        <Button type="submit" className="bg-[#0D0D0D]">
                             Create Account
                         </Button>
                     </div>

@@ -1,13 +1,15 @@
 import React from 'react'
-import { Post  } from '../components/index'
+import { PostForm, Container } from '../components/index'
 
 function AddPost() {
   return (
-    <div className='w-full max-w-7xl mx-auto px-4'>
+    <div className='py-8'>
+      <Container>
         <PostForm />
+      </Container>
     </div>
+    
   )
 }
-import { PostForm } from '../components/index'
 
 export default AddPost

@@ -11,24 +11,24 @@ export class Service {
         this.client
             .setEndpoint(conf.appwirteApiEndpointUrl) 
             .setProject(conf.appwirteProjectId); 
-        this.databases = new Databases(this.client);
-        this.bucket = new Storage(this.client);
+            this.databases = new Databases(this.client);
+            this.bucket = new Storage(this.client);
         
     }
 
 
-    async createPost({Title, Slug, Content, FeaturedImage, Status, UserID}){
+    async createPost({title, slug, content, featuredImage, status, userId}){
         try {
             return await this.databases.createDocument(
                 conf.appwirteDatebaseId,
                 conf.appwirteCollectionId,
-                Slug,
+                slug,
                 {
-                    Title,
-                    Content,
-                    FeaturedImage,
-                    Status,
-                    UserID
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+                    userId,
                 }
             )
         } catch (error) {
@@ -37,56 +37,57 @@ export class Service {
     }
 
 
-    async updatePost(Slug, {Title, Content, FeaturedImage, Status}){
+    async updatePost(slug, {title, content, featuredImage, status}){
         try {
             return await this.databases.updateDocument(
                 conf.appwirteDatebaseId,
                 conf.appwirteCollectionId,
-                Slug,
+                slug,
                 {
-                    Title,
-                    Content,
-                    FeaturedImage,
-                    Status
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+
                 }
             )
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error",error);
+            console.log("Appwrite serive :: updatePost :: error", error);
         }
     }
 
 
     //Slug === doucumentId
-    async deletePost(Slug){
+    async deletePost(slug){
         try {
             await this.databases.deleteDocument(
                 conf.appwirteDatebaseId,
                 conf.appwirteCollectionId,
-                Slug
+                slug
             );
             return true
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error",error);
+            console.log("Appwrite serive :: deletePost :: error", error);
             return false
         }
     }
 
 
-    async getPost(Slug){
+    async getPost(slug){
         try {
             return await this.databases.getDocument(
                 conf.appwirteDatebaseId,
                 conf.appwirteCollectionId,
-                Slug    
+                slug    
             )
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error",error);
+            console.log("Appwrite serive :: getPost :: error", error);
             return false
         }
     }
 
 
-    async getsPosts(queries = [Query.equal("Status", "active")]){
+    async getsPosts(queries = [Query.equal("status", "active")]){
         try {
             return await this.databases.listDocuments(
                 conf.appwirteDatebaseId,
@@ -94,7 +95,7 @@ export class Service {
                 queries
             )
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error",error);
+            console.log("Appwrite serive :: getPosts :: error", error);
             return false
         }
     }
@@ -110,7 +111,7 @@ export class Service {
 
             )
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error",error);
+            console.log("Appwrite serive :: uploadFile :: error", error);
             return false
         }
     }
@@ -123,7 +124,7 @@ export class Service {
             )
             return true
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error",error);
+            console.log("Appwrite serive :: uploadFile :: error", error);
             return false
         }
     }

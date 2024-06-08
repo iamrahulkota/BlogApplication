@@ -10,6 +10,7 @@ import Signup from "../pages/Signup";
 import PostForm from '../components/post-form/PostForm'
 import AuthLayout from './AuthLayout'
 import Post from "../pages/Post";
+import Container from "./container/Container";
 
 export {
     Header,
@@ -23,6 +24,7 @@ export {
     Signup,
     Post,
     PostForm,
-    AuthLayout
+    AuthLayout,
+    Container
 
 }

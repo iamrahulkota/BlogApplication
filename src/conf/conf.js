@@ -1,5 +1,5 @@
 const conf = {
-    appwirteApiEndpointUrl : String(import.meta.env.VITE_APPWRITE_APIENDPOINT_URL),
+    appwirteApiEndpointUrlappwirteApiEndpointUrl : String(import.meta.env.VITE_APPWRITE_APIENDPOINT_URL),
     appwirteProjectId : String(import.meta.env.VITE_APPWRITE_PROJECT_ID),
     appwirteDatebaseId : String(import.meta.env.VITE_APPWRITE_DATEBASE_ID),
     appwirteCollectionId : String(import.meta.env.VITE_APPWRITE_COLLECTION_ID),

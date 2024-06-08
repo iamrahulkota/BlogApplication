@@ -10,46 +10,47 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
-            title: post?.title || "",
+            title: post?.Title || "",
             slug: post?.$id || "",
-            content: post?.content || "",
-            status: post?.status || "active",
+            content: post?.Content || "",
+            status: post?.Status || "active",
         },
     })
 
+
     const submit = async (data) => {
-        if(post) {
-            const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
+        if (post) {
+            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
-                appwriteService.deleteFile(post.FeaturedImage)
+                appwriteService.deleteFile(post.FeaturedImage);
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
-                FeaturedImage : file ? file.$id : undefined,
-            })
+                FeaturedImage: file ? file.$id : undefined,
+            });
 
             if (dbPost) {
-                navigate(`/post/${dbPost.$id}`)
+                navigate(`/post/${dbPost.$id}`);
             }
-        } 
-        else {
-            const file  = await appwriteService.uploadFile(data.image[0]);
+        } else {
+            const file = await appwriteService.uploadFile(data.image[0]);
 
             if (file) {
-                const fileId = file.$id
-                data.FeaturedImage = fileId
-                await appwriteService.createPost({
-                    ...data,
-                    UserId : userData.$id,
-                })
+                const fileId = file.$id;
+                data.FeaturedImage = fileId;
+                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
+
                 if (dbPost) {
-                    navigate(`/post/${dbPost.$id}`)
+                    navigate(`/post/${dbPost.$id}`);
                 }
             }
         }
-    }
+    };
+
+
+    
 
     const slugTranform = useCallback((value) => {
         if (value && typeof value === 'string') {
@@ -103,8 +104,8 @@ export default function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
+                            src={appwriteService.getFilePreview(post.FeaturedImage)}
+                            alt={post.Title}
                             className="rounded-lg"
                         />
                     </div>
@@ -122,3 +123,6 @@ export default function PostForm({ post }) {
         </form>
   );
 }
+
+
+

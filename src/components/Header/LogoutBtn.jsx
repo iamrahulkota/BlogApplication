@@ -15,7 +15,7 @@ function LogoutBtn() {
     
   return (
     <>
-        <button className='text-white text-3xl'></button>
+        <button className='text-white text-3xl' onClick={logoutHandler}>Logout</button>
     </>
   )
 }

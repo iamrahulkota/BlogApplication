@@ -16,36 +16,36 @@ function Header() {
       {
           name : 'Home',
           Slug : '/',
-          active : true
+          active : true,
       }, 
       {
           name : 'Login',
           Slug : '/login',
-          active : !authStatus
+          active : !authStatus,
       },
       {
           name : 'Signup',
           Slug : '/signup',
-          active : !authStatus
+          active : !authStatus,
       },
       {
           name : 'AllPosts',
           Slug : 'allposts',
-          active : authStatus
+          active : authStatus,
       },
       {
         name : 'AddPosts',
         Slug : 'addposts',
-        active : authStatus
-      }
+        active : authStatus,
+      },
   ]
 
   return (
     <>
       <header>
-        <nav>
-          <div className='py-10'>
-            <Link to='/' className='uppercase font-bold text-5xl'>Sleek Stories</Link>
+        <nav className='flex justify-between py-10'>
+          <div>
+            <Link to='/' onClick={()=>navigate('/')} className='uppercase font-bold text-5xl'>Sleek Stories</Link>
           </div>
           <div>
             <ul className='flex ml-auto'>
@@ -67,8 +67,8 @@ function Header() {
 
             </ul>
           </div>
-          <div className='w-100 border bg-white opacity-15'></div>
         </nav>
+          <div className='w-100 border bg-white opacity-15'></div>
       </header>
     </>
   )

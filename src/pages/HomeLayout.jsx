@@ -10,7 +10,7 @@ function HomeLayout() {
   const [posts, setPosts] = useState([])
 
   useEffect(()=>{
-    appwriteService.getsPosts().then((posts)=>{
+    appwriteService.getPosts().then((posts)=>{
       if (posts) {
         setPosts(posts.documents)
       }

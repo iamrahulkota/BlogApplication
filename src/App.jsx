@@ -7,8 +7,7 @@ import { Outlet } from 'react-router-dom'
 import { Footer, Header } from './components'
 
 function App() {
-
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,6 +21,7 @@ function App() {
     })
     .finally(() => setLoading(false))
   }, [])
+  
 
   return !loading ? (
     <div className="w-full h-full">

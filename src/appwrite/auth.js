@@ -1,4 +1,3 @@
-
 import conf from '../conf/conf.js';
 import { Client, Account, ID } from "appwrite";
 
@@ -9,8 +8,8 @@ export class AuthService {
 
     constructor() {
         this.client
-            .setEndpoint(conf.appwirteApiEndpointUrl)
-            .setProject(conf.appwirteProjectId);
+            .setEndpoint(conf.appwriteUrl)
+            .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
             
     }
@@ -19,6 +18,7 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
+                // call another method
                 return this.login({email, password});
             } else {
                return  userAccount;
@@ -39,6 +39,7 @@ export class AuthService {
     async getCurrentUser() {
         try {
             return await this.account.get();
+            console.error('Failed to fetch current user:', error);
         } catch (error) {
             console.log("Appwrite serive :: getCurrentUser :: error", error);
         }

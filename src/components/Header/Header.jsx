@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { LogoutBtn } from '../index'
+import { Container, LogoutBtn } from '../index'
 
 function Header() {
 
@@ -13,39 +13,40 @@ function Header() {
   })
 
   const navItems = [
-      {
-          name : 'Home',
-          Slug : '/',
-          active : true,
-      }, 
-      {
-          name : 'Login',
-          Slug : '/login',
-          active : !authStatus,
-      },
-      {
-          name : 'Signup',
-          Slug : '/signup',
-          active : !authStatus,
-      },
-      {
-          name : 'AllPosts',
-          Slug : 'allposts',
-          active : authStatus,
-      },
-      {
-        name : 'AddPosts',
-        Slug : 'addposts',
-        active : authStatus,
-      },
+    {
+      name: 'Home',
+      slug: "/",
+      active: true
+    }, 
+    {
+      name: "Login",
+      slug: "/login",
+      active: !authStatus,
+  },
+  {
+      name: "Signup",
+      slug: "/signup",
+      active: !authStatus,
+  },
+  {
+      name: "All Posts",
+      slug: "/all-posts",
+      active: authStatus,
+  },
+  {
+      name: "Add Post",
+      slug: "/add-post",
+      active: authStatus,
+  },
   ]
+
 
   return (
     <>
       <header>
         <nav className='flex justify-between py-10'>
           <div>
-            <Link to='/' onClick={()=>navigate('/')} className='uppercase font-bold text-5xl'>Sleek Stories</Link>
+            <Link to='/' className='uppercase font-bold text-5xl'>Sleek Stories</Link>
           </div>
           <div>
             <ul className='flex ml-auto'>
@@ -54,7 +55,7 @@ function Header() {
                   <li key={item.name}>
                     <button 
                     className='text-white text-3xl'
-                    onClick={()=> navigate(item.Slug)}
+                    onClick={()=> navigate(item.slug)}
                     >{item.name}</button>
                   </li>
                 ) : null

@@ -10,22 +10,22 @@ function Footer() {
         <div className='flex flex-col lg:flex-row lg:justify-between '>
 
           <div>
-              <h1 className='text-white font-medium text-base'>Made & Curated by Rahul</h1>
+              <Link to='https://www.instagram.com/iamrahulkota/' className='text-white font-medium text-base'>Made & Curated by Rahul</Link>
           </div>
 
           <div className='md:flex font-medium'>
 
               <div className='px-6'>  
-                  <h1 className='text-white py-1'>About</h1>
-                  <h1 className='text-white py-1'>Support this project </h1>
+                  <Link to='' className='text-white py-1'>About</Link><br></br>
+                  <Link to='' className='text-white py-1'>Support this project </Link>
               </div>  
               <div className='px-6'>  
-                  <h1 className='text-white py-1'>Add a resource</h1>
-                  <h1 className='text-white py-1'>Contribute on Github</h1>
+                  <Link className='text-white py-1'>Add a resource</Link><br></br>
+                  <Link to='https://github.com/iamrahulkota/BlogApplication' className='text-white py-1'>Contribute on Github</Link>
               </div>  
               <div className='px-6'>  
-                  <h1 className='text-white py-1'>Submit feedback</h1>
-                  <h1 className='text-white py-1'>Legal</h1>
+                  <Link to='' className='text-white py-1'>Submit feedback</Link><br></br>
+                  <Link to='' className='text-white py-1'>Legal</Link>
               </div> 
 
           </div>

@@ -4,25 +4,23 @@ import authService from "./appwrite/auth"
 import { login, logout } from "./store/authSlice"
 import { Outlet } from 'react-router-dom'
 
-import Header from "./components/Header/Header"
-import Footer from "./components/Footer/Footer"
-
+import { Footer, Header } from './components'
 
 function App() {
 
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(() => {
     authService.getCurrentUser()
-    .then((userData)=>{
-      if(userData){
+    .then((userData) => {
+      if (userData) {
         dispatch(login({userData}))
-      }else{
+      } else {
         dispatch(logout())
       }
     })
-    .finally(()=> setLoading(false))
+    .finally(() => setLoading(false))
   }, [])
 
   return !loading ? (

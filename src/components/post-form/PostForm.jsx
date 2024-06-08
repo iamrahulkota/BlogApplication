@@ -10,10 +10,10 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
-            title: post?.Title || "",
+            title: post?.title || "",
             slug: post?.$id || "",
-            content: post?.Content || "",
-            status: post?.Status || "active",
+            content: post?.content || "",
+            status: post?.status || "active",
         },
     })
 
@@ -23,12 +23,12 @@ export default function PostForm({ post }) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
-                appwriteService.deleteFile(post.FeaturedImage);
+                appwriteService.deleteFile(post.featuredImage);
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
-                FeaturedImage: file ? file.$id : undefined,
+                featuredImage: file ? file.$id : undefined,
             });
 
             if (dbPost) {
@@ -39,7 +39,7 @@ export default function PostForm({ post }) {
 
             if (file) {
                 const fileId = file.$id;
-                data.FeaturedImage = fileId;
+                data.featuredImage = fileId;
                 const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
 
                 if (dbPost) {
@@ -65,7 +65,7 @@ export default function PostForm({ post }) {
 
     useEffect(() => {
         const subscription = watch((value, { name }) => {
-            if (name === "title") {
+            if (name === "title") {``
                 setValue("slug", slugTranform(value.title), { shouldValidate: true });
             }
         });
@@ -104,7 +104,7 @@ export default function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.FeaturedImage)}
+                            src={appwriteService.getFilePreview(post.featuredImage)}
                             alt={post.Title}
                             className="rounded-lg"
                         />

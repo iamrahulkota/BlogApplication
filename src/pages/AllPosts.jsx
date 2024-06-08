@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import appwriteService from '../appwrite/config'
-import { PostCard, Container } from '../components/index'
+import { PostCard, Container } from '../components'
 
 function AllPosts() {
-    cosnt [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([])
     useEffect(() => {}, [])
     appwriteService.getsPosts([]).then((posts) => {
         if (posts) {
@@ -13,14 +13,14 @@ function AllPosts() {
   return (
     <>
         <div className='w-full py-8'>
-            <Container>
-                <div className='flex flex-wrap'>
+        <Container>
+            <div className='flex flex-wrap'>
                 {posts.map((post) => (
                     <div key={post.$id} className='p-2 w-1/4'>
                         <PostCard {...post} />
                     </div>
                 ))}
-                </div>
+            </div>
             </Container>
         </div>
     </>
